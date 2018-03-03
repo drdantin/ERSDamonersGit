@@ -1,0 +1,9 @@
+@charset "ISO-8859-1";
+#approve{
+	color: green;
+}
+
+#deny{
+	color:black;
+	width:70px;
+}
