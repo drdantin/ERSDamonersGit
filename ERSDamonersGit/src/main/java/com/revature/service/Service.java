@@ -29,7 +29,4 @@ public interface Service {
 	public boolean accept(int reimbid, int resolverid, int statusid);
 	
 	public boolean deny(int reimbid, int resolverid, int statusid);
-	
-	
-		
 }

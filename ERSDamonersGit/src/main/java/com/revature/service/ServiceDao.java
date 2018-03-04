@@ -10,6 +10,7 @@ import com.revature.model.DetailView;
 import com.revature.model.ViewReimbPojo;
 
 public class ServiceDao implements Service {
+	
 	private List<ViewReimbPojo> list;
 	@Override
 	public boolean isManager(String user_name, String pass_word) {

@@ -281,29 +281,5 @@ public static int getStatusId(String status) {
 		e.printStackTrace();
 	}
 	return reimb_status_id;
-}
-
-
-
-//	public static boolean register(String username, String password) {
-//		boolean isAuthenticated = false;
-//		try(Connection conn = DriverManager.getConnection(url, username, password);){
-//			String sql= "select username" ;
-//			PreparedStatement stmt = conn.prepareCall(sql);
-//			ResultSet rset = stmt.executeQuery();
-//			while(rset.next()) {
-//			userRole = rset.getString(1);
-//			}
-//			if(userRole.equals("Manager")){
-//				isManager = true;
-//				}
-//			conn.close();
-//			stmt.close();
-//		}catch(SQLException e) {
-//			e.printStackTrace();
-//		}
-//		return isAuthenticated;
-//	}
-//		return true;
-//}
+	}
 }
