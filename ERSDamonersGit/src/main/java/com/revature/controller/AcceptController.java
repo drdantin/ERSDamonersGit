@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.model.Accept;
 import com.revature.service.ServiceDao;
-
+// Just something I am adding to check out git
 public class AcceptController {
 	
 	public static String accept(HttpServletRequest request,HttpServletResponse response) {
