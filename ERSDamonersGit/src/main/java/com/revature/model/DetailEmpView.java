@@ -92,7 +92,4 @@ public class DetailEmpView {
 	public void setReimbId(int reimbId) {
 		this.reimbId = reimbId;
 	}
-	
-	
-	
 }

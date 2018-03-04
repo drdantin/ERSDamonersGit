@@ -13,6 +13,7 @@ import com.revature.model.Deny;
 import com.revature.service.ServiceDao;
 
 public class DenyController {
+	
 	public static String deny(HttpServletRequest request,HttpServletResponse response) {
 		ServiceDao serveDao = new ServiceDao();
 		Deny denyObj;

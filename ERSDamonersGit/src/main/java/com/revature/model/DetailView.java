@@ -3,19 +3,19 @@ package com.revature.model;
 import java.sql.Date;
 
 public class DetailView {
-	
+
 	private String firstname;
-	 private String lastname;
-	 private String useremail;
-	 private int resolver;
-	 private Date submitted;
-	 private Date resolved;
-	 private String description;
-	 private int amount;
-	 private String status;
-	 private int reimbId;
-	 
-	 public DetailView(String firstname, String lastname, String useremail, String author, int resolver,
+	private String lastname;
+	private String useremail;
+	private int resolver;
+	private Date submitted;
+	private Date resolved;
+	private String description;
+	private int amount;
+	private String status;
+	private int reimbId;
+
+	public DetailView(String firstname, String lastname, String useremail, String author, int resolver,
 			Date submitted, Date resolved, String description, int amount, String status,int reimbId) {
 		super();
 		this.firstname = firstname;
@@ -29,10 +29,10 @@ public class DetailView {
 		this.status = status;
 		this.reimbId = reimbId;
 	}
-	 
-	 public DetailView() {
-		 
-	 }
+
+	public DetailView() {
+
+	}
 
 	public String getFirstname() {
 		return firstname;
@@ -113,7 +113,4 @@ public class DetailView {
 	public void setReimbId(int reimbId) {
 		this.reimbId = reimbId;
 	}
-	
-	 
-	 
 }

@@ -1,6 +1,7 @@
 package com.revature.model;
 
 public class Deny {
+	
 	private int reimbid;
 	
 	public Deny(int reimbid) {

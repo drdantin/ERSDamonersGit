@@ -12,6 +12,7 @@ import com.revature.model.Accept;
 import com.revature.service.ServiceDao;
 
 public class AcceptController {
+	
 	public static String accept(HttpServletRequest request,HttpServletResponse response) {
 		ServiceDao serveDao = new ServiceDao();
 		Accept acceptObj;
