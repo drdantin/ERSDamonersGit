@@ -2,9 +2,9 @@ package com.revature.model;
 
 import java.io.Serializable;
 
-public class User implements Serializable {
+public class Employee implements Serializable {
 
-	/**
+	/**1. Going to implement AcceptController with 
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
@@ -16,7 +16,7 @@ public class User implements Serializable {
 	private String userName;
 	private int userRoleId;
 	
-	public User(String ers_username, String ers_password) {
+	public Employee(String ers_username, String ers_password) {
 		super();
 
 		this.userName = ers_username;

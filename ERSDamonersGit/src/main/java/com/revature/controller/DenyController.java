@@ -3,20 +3,17 @@ package com.revature.controller;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.revature.model.Accept;
-import com.revature.model.Deny;
+import com.revature.model.Reimbursement;
 import com.revature.service.ServiceDao;
 
 public class DenyController {
 	
 	public static String deny(HttpServletRequest request,HttpServletResponse response) {
 		ServiceDao serveDao = new ServiceDao();
-		Deny denyObj;
+		Reimbursement reimbObj;
 		int resolverId =0;
 		boolean isDenied = false;
 		int statusId = 402;
@@ -34,11 +31,11 @@ public class DenyController {
 				thejson = br.readLine();
 				System.out.println("the thejson is " + thejson);
 				
-				denyObj = mapper.readValue(thejson, Deny.class);
+				reimbObj = mapper.readValue(thejson, Reimbursement.class);
 				response.setContentType("application/json");   
 				resolverId = serveDao.getResId(resolverUsername);
 				System.out.println("The resolver id is ---> " + resolverId);
-				isDenied = serveDao.deny(denyObj.getReimbid(), resolverId, statusId);
+				isDenied = serveDao.deny(reimbObj.getReimbId(), resolverId, statusId);
 							
 			}
 		}catch(Exception e) {

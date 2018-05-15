@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import com.revature.dao.Dao;
-import com.revature.model.AddReimbursementAjax;
+import com.revature.model.Reimbursement;
 import com.revature.service.ServiceDao;
 
 public class AddReimbursementController{
@@ -32,7 +32,7 @@ public class AddReimbursementController{
 			if(br != null){
 				thejson = br.readLine();
 				
-				AddReimbursementAjax ajax = mapper.readValue(thejson, AddReimbursementAjax.class);
+				Reimbursement ajax = mapper.readValue(thejson, Reimbursement.class);
 				response.setContentType("application/json");   
 				String username = (String)request.getSession().getAttribute("loggedusername");
 				int user_id = serveDao.getUserId(username);
