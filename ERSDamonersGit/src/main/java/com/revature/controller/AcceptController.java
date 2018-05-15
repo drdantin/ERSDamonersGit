@@ -16,11 +16,11 @@ public class AcceptController {
 	public static String accept(HttpServletRequest request,HttpServletResponse response) {
 		ServiceDao serveDao = new ServiceDao();
 		Accept acceptObj;
-		int resolverId =0;
+		int id =0;
 		boolean isAccept = false;
 		int statusId = 401;
 		
-		String resolverUsername = (String)request.getSession().getAttribute("loggedusername");
+		String userName = (String)request.getSession().getAttribute("loggedusername");
 		if(request.getMethod().equals("GET")) {
 			return "index.html";
 		}
@@ -35,8 +35,8 @@ public class AcceptController {
 				acceptObj = mapper.readValue(thejson, Accept.class);
 				
 				response.setContentType("application/json");   
-				resolverId = serveDao.getResId(resolverUsername);
-				isAccept = serveDao.accept(acceptObj.getReimbid(), resolverId, statusId);
+				id = serveDao.getResId(userName);
+				isAccept = serveDao.accept(acceptObj.getReimbid(), id, statusId);
 							
 			}
 		}catch(Exception e) {
