@@ -2,7 +2,7 @@ package com.revature.model;
 
 import java.sql.Date;
 
-public class DetailEmpView {
+public class ReimbDescription_View {
 	private String author;
 	private String email;
 	private Date submitted;
@@ -12,7 +12,8 @@ public class DetailEmpView {
 	private String resolver;
 	private int reimbId;
 	
-	public DetailEmpView(String author, String email, Date submitted, String description, String status, Date resolved,
+	
+	public ReimbDescription_View(String author, String email, Date submitted, String description, String status, Date resolved,
 			String resolver, int reimbId) {
 		super();
 		this.author = author;
@@ -25,7 +26,7 @@ public class DetailEmpView {
 		this.reimbId = reimbId;
 	}
 	
-	public DetailEmpView() {
+	public ReimbDescription_View() {
 		
 	}
 

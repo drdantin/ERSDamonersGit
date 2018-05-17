@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.revature.model.DetailEmpView;
-import com.revature.model.DetailView;
+import com.revature.model.ReimbDescription_View;
+import com.revature.model.EmployeeDescription_View;
 import com.revature.service.ServiceDao;
 
 public class GetDetailViewController {
@@ -19,9 +19,9 @@ public class GetDetailViewController {
 		System.out.println("In GetDetailViewController");
 		String isWritten = "yes";
 	
-		List<DetailView> generalListView;
+		List<EmployeeDescription_View> generalListView;
 	
-		List<DetailEmpView> completedListToSend = new ArrayList<>();
+		List<ReimbDescription_View> completedListToSend = new ArrayList<>();
 		
 		List<String> resolversList = new LinkedList<String>();
 		
@@ -45,11 +45,11 @@ public class GetDetailViewController {
 		}
 		return isWritten;
 	}
-	private static List<DetailEmpView> getResFullName(List<DetailView> general, List<String> resolver){
-	List<DetailEmpView> fullList = new ArrayList<DetailEmpView>();
+	private static List<ReimbDescription_View> getResFullName(List<EmployeeDescription_View> general, List<String> resolver){
+	List<ReimbDescription_View> fullList = new ArrayList<ReimbDescription_View>();
 	
 		for(int i = 0; i < general.size();i++) {
-			DetailEmpView view = new DetailEmpView();
+			ReimbDescription_View view = new ReimbDescription_View();
 			
 			String name = general.get(i).getFirstname();
 			String fullname = name.concat(" ").concat(general.get(i).getLastname());

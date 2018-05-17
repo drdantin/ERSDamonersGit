@@ -9,9 +9,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.revature.model.DetailView;
-import com.revature.model.ViewReimbPojo;
+import com.revature.model.EmployeeDescription_View;
+import com.revature.model.Reimbursement;
 
 public class Dao {
 	
@@ -161,8 +160,8 @@ public static int getTypeId(String type) {
 }
 
 
-public static List<ViewReimbPojo> getView(int user_id){
-	List<ViewReimbPojo> list = new ArrayList<ViewReimbPojo>();
+public static List<Reimbursement> getView(int user_id){
+	List<Reimbursement> list = new ArrayList<Reimbursement>();
 	try(Connection conn = DriverManager.getConnection(url, username, password);){
 		String sql= "select reimb_amount,reimb_submitted,reimb_resolved,reimb_description,reimb_status"
 				+ " from ers_reimbursement natural inner join ers_reimbursement_status where reimb_author ="+"'"+user_id+"'";
@@ -170,12 +169,12 @@ public static List<ViewReimbPojo> getView(int user_id){
 		ResultSet rset = stmt.executeQuery();
 		int i = 0;
 		while(rset.next()) {
-			list.add(new ViewReimbPojo());
-			list.get(i).setReimb_amount(rset.getInt(1));
-			list.get(i).setSubDate(rset.getDate(2));
-			list.get(i).setResDate(rset.getDate(3));
+			list.add(new Reimbursement());
+			list.get(i).setAmount(rset.getInt(1));
+			list.get(i).setSubmitted(rset.getDate(2));
+			list.get(i).setResolved(rset.getDate(3));
 			list.get(i).setDescription(rset.getString(4));
-			list.get(i).setRiembStatus(rset.getString(5));
+			list.get(i).setStatus(rset.getString(5));
 			++i;
 			}
 		
@@ -188,8 +187,8 @@ public static List<ViewReimbPojo> getView(int user_id){
 	return list;
 }
 
-public static List<DetailView> getDetailView(){
-List<DetailView> list = new ArrayList<DetailView>();
+public static List<EmployeeDescription_View> getDetailView(){
+List<EmployeeDescription_View> list = new ArrayList<EmployeeDescription_View>();
 try(Connection conn = DriverManager.getConnection(url, username, password);){
 	String sql= "select user_first_name, user_last_name, user_email, reimb_resolver,reimb_submitted, reimb_resolved, "
 			+ "reimb_description, reimb_status, reimb_id from ers_reimbursement er inner join ers_users es on"+ 
@@ -199,7 +198,7 @@ try(Connection conn = DriverManager.getConnection(url, username, password);){
 	int i = 0;
 	//Date someDate = new Date(System.currentTimeMillis());
 	while(rset.next()) {
-		list.add(new DetailView());
+		list.add(new EmployeeDescription_View());
 		list.get(i).setFirstname(rset.getString(1));
 		list.get(i).setLastname(rset.getString(2));
 		list.get(i).setUseremail(rset.getString(3));

@@ -2,8 +2,8 @@ package com.revature.service;
 
 import java.util.List;
 
-import com.revature.model.DetailView;
-import com.revature.model.ViewReimbPojo;
+import com.revature.model.EmployeeDescription_View;
+import com.revature.model.Reimbursement;
 
 public interface Service {
 	public boolean isManager(String user_name,String pass_word);
@@ -14,9 +14,9 @@ public interface Service {
 	
 	public int getUserId(String user_name);
 	
-	public List<ViewReimbPojo> getView(int user_id);
+	public List<Reimbursement> getView(int user_id);
 	
-	public List<DetailView> getDetailView();
+	public List<EmployeeDescription_View> getDetailView();
 	
 	public String getResolver(int user_id);
 	

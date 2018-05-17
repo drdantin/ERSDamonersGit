@@ -1,6 +1,7 @@
 package com.revature.model;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 public class Employee implements Serializable {
 

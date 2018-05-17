@@ -2,7 +2,7 @@ package com.revature.model;
 
 import java.sql.Date;
 
-public class DetailView {
+public class EmployeeDescription_View {
 
 	private String firstname;
 	private String lastname;
@@ -15,7 +15,7 @@ public class DetailView {
 	private String status;
 	private int reimbId;
 
-	public DetailView(String firstname, String lastname, String useremail, String author, int resolver,
+	public EmployeeDescription_View(String firstname, String lastname, String useremail, String author, int resolver,
 			Date submitted, Date resolved, String description, int amount, String status,int reimbId) {
 		super();
 		this.firstname = firstname;
@@ -30,7 +30,7 @@ public class DetailView {
 		this.reimbId = reimbId;
 	}
 
-	public DetailView() {
+	public EmployeeDescription_View() {
 
 	}
 

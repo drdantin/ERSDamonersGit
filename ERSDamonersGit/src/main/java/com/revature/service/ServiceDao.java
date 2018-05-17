@@ -4,14 +4,13 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-
 import com.revature.dao.Dao;
-import com.revature.model.DetailView;
-import com.revature.model.ViewReimbPojo;
+import com.revature.model.EmployeeDescription_View;
+import com.revature.model.Reimbursement;
 
 public class ServiceDao implements Service {
 	
-	private List<ViewReimbPojo> list;
+	private List<Reimbursement> list;
 	@Override
 	public boolean isManager(String user_name, String pass_word) {
 		boolean is_Manager = false;
@@ -47,15 +46,15 @@ public class ServiceDao implements Service {
 	}
 	
 	@Override
-	public List<ViewReimbPojo> getView(int user_id) {
+	public List<Reimbursement> getView(int user_id) {
 		
 		list = Dao.getView(user_id);
 		return list;
 	}
 	
 	@Override
-	public List<DetailView> getDetailView(){
-		List<DetailView> list;
+	public List<EmployeeDescription_View> getDetailView(){
+		List<EmployeeDescription_View> list;
 		list = Dao.getDetailView();			
 		return list;
 	}
