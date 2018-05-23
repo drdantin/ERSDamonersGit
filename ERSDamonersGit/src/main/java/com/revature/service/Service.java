@@ -2,7 +2,7 @@ package com.revature.service;
 
 import java.util.List;
 
-import com.revature.model.EmployeeDescription_View;
+import com.revature.model.ReimbAndEmployee;
 import com.revature.model.Reimbursement;
 
 public interface Service {
@@ -16,7 +16,7 @@ public interface Service {
 	
 	public List<Reimbursement> getView(int user_id);
 	
-	public List<EmployeeDescription_View> getDetailView();
+	public List<ReimbAndEmployee> getEmployeeDescription_View();
 	
 	public String getResolver(int user_id);
 	

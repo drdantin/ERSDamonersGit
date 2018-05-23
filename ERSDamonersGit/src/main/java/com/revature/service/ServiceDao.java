@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import com.revature.dao.Dao;
-import com.revature.model.EmployeeDescription_View;
+import com.revature.model.ReimbAndEmployee;
 import com.revature.model.Reimbursement;
 
 public class ServiceDao implements Service {
@@ -53,9 +53,9 @@ public class ServiceDao implements Service {
 	}
 	
 	@Override
-	public List<EmployeeDescription_View> getDetailView(){
-		List<EmployeeDescription_View> list;
-		list = Dao.getDetailView();			
+	public List<ReimbAndEmployee> getEmployeeDescription_View(){
+		List<ReimbAndEmployee> list;
+		list = Dao.getEmployeeDescription_View();			
 		return list;
 	}
 	

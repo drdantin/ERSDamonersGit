@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import com.revature.model.EmployeeDescription_View;
+import com.revature.model.ReimbAndEmployee;
 import com.revature.model.Reimbursement;
 
 public class Dao {
@@ -187,8 +187,8 @@ public static List<Reimbursement> getView(int user_id){
 	return list;
 }
 
-public static List<EmployeeDescription_View> getDetailView(){
-List<EmployeeDescription_View> list = new ArrayList<EmployeeDescription_View>();
+public static List<ReimbAndEmployee> getEmployeeDescription_View(){
+List<ReimbAndEmployee> list = new ArrayList<ReimbAndEmployee>();
 try(Connection conn = DriverManager.getConnection(url, username, password);){
 	String sql= "select user_first_name, user_last_name, user_email, reimb_resolver,reimb_submitted, reimb_resolved, "
 			+ "reimb_description, reimb_status, reimb_id from ers_reimbursement er inner join ers_users es on"+ 
@@ -198,7 +198,7 @@ try(Connection conn = DriverManager.getConnection(url, username, password);){
 	int i = 0;
 	//Date someDate = new Date(System.currentTimeMillis());
 	while(rset.next()) {
-		list.add(new EmployeeDescription_View());
+		list.add(new ReimbAndEmployee());
 		list.get(i).setFirstname(rset.getString(1));
 		list.get(i).setLastname(rset.getString(2));
 		list.get(i).setUseremail(rset.getString(3));

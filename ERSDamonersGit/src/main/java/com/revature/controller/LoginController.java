@@ -10,6 +10,7 @@ import com.revature.service.ServiceDao;
 public class LoginController {
 
 	public static String login(HttpServletRequest request,HttpServletResponse response) {
+		
 		ServiceDao serveDao = new ServiceDao();
 		boolean isManager = false;
 		boolean isAuthenticated = false;
@@ -65,6 +66,7 @@ public class LoginController {
 				return "/manPage.do";
 			}
 			else if(isManager == false && isAuthenticated == true) {
+				System.out.println("in ismaanger = false and isauthenticated = true");
 				ObjectMapper mapper = new ObjectMapper();
 				response.setContentType("application/json");        
 				try {
