@@ -6,8 +6,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class Logout {
-	public static String getOut(HttpServletRequest request,HttpServletResponse response) {
+public class LogoutController {
+	public static String logOut(HttpServletRequest request,HttpServletResponse response) {
 
 		try {
 			request.logout();

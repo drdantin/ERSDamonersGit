@@ -9,9 +9,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.model.Reimbursement;
 import com.revature.service.ServiceDao;
 
-public class DenyController {
+public class DenyReimbController {
 	
-	public static String deny(HttpServletRequest request,HttpServletResponse response) {
+	public static String denyReimb(HttpServletRequest request,HttpServletResponse response) {
 		ServiceDao serveDao = new ServiceDao();
 		Reimbursement reimbObj;
 		int resolverId =0;

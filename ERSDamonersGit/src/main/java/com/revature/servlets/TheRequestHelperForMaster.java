@@ -3,13 +3,14 @@ package com.revature.servlets;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.revature.controller.AcceptController;
 import com.revature.controller.AddReimbursementController;
-import com.revature.controller.DenyController;
+import com.revature.controller.AproveReimbController;
+import com.revature.controller.DenyReimbController;
+import com.revature.controller.GetAllEmpReimbController;
+import com.revature.controller.GetAllReimbPageController;
 import com.revature.controller.LoginController;
-import com.revature.controller.Logout;
-import com.revature.controller.ViewAllReimbController;
-import com.revature.controller.ViewEmployeeReimbController;
+import com.revature.controller.LogoutController;
+
 import com.revature.controller.WriterEmpView;
 
 
@@ -20,26 +21,22 @@ public class TheRequestHelperForMaster {
 		switch(request.getRequestURI()) {
 		case "/ERS_Damoners/Login.do":
 			return LoginController.login(request,response);
-		case "/ERS_Damoners/accept.do":
-			return AcceptController.accept(request,response);
+		case "/ERS_Damoners/aproveReimb.do":
+			return AproveReimbController.aproveReimb(request,response);
 		case "/ERS_Damoners/addReimbursement.do":
 			return AddReimbursementController.addReimb(request,response);
 		case "/ERS_Damoners/WriterEmpView.do":
 			return WriterEmpView.writeView(request, response);
 		case "/ERS_Damoners/Logout.do":
-			return Logout.getOut(request, response);
-		case "/ERS_Damoners/viewAllReimbController.do":
-			return ViewAllReimbController.viewAllReimb(request, response);
-		case	"/ERS_Damoners/ViewEmployeeReimbController.do":
-			return ViewEmployeeReimbController.getViewEmployeeReimb(request,response);
-		case	"/ERS_Damoners/Deny.do":
-			return DenyController.deny(request,response);
+			return LogoutController.logOut(request, response);
+		case "/ERS_Damoners/GetAllReimbPageController.do":
+			return GetAllReimbPageController.getAllReimbPage(request, response);
+		case	"/ERS_Damoners/GetAllEmpReimbController.do":
+			return GetAllEmpReimbController.getAllEmpReimb(request,response);
+		case	"/ERS_Damoners/denyReimb.do":
+			return DenyReimbController.denyReimb(request,response);
 		default:
 			return "/ERS_Damoners/welcome.html";
 		}
-		//GetDetailViewController.do
-		
-	
-		
 	}
 }

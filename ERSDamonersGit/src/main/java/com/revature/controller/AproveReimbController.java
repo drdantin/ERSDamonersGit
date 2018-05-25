@@ -9,9 +9,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.model.Reimbursement;
 import com.revature.service.ServiceDao;
 
-public class AcceptController {
+public class AproveReimbController {
 	
-	public static String accept(HttpServletRequest request,HttpServletResponse response) {
+	public static String aproveReimb(HttpServletRequest request,HttpServletResponse response) {
 		ServiceDao serveDao = new ServiceDao();
 		Reimbursement reimbObj;
 		int id =0;

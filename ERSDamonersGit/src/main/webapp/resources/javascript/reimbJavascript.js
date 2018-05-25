@@ -23,7 +23,6 @@ $(function () {
 	}
 
 	function login(){
-		console.log("in login");
 		var username = $('#username').val();
 		var password = $('#password').val();
 
@@ -31,7 +30,6 @@ $(function () {
 		var json = JSON.stringify(toSend);
 
 		var xhr = new XMLHttpRequest();
-//		console.log(xhr.readyState);
 		xhr.onreadystatechange = function(){
 			if(xhr.readyState == 4 && xhr.status==200){
 				console.log("in xhr callback" + xhr.responseText);
@@ -39,10 +37,10 @@ $(function () {
 				var loginMessage = JSON.parse(xhr.responseText);
 				if(loginMessage == 'Success'){
 					alert("Employee Login Success");
-					gettoAddReimb();
+					getAddReimbPage();
 				}else if(loginMessage == "man"){
 					alert("Manager Login Success");
-					viewInitEmpReimb();
+					getAllEmpReimbPage();//****************
 				}else{
 					alert("Login Failed");
 					getLoginPage();
@@ -58,7 +56,6 @@ $(function () {
 	}
 
 	function logout(){
-		console.log("In logout **********");
 		var xhr = new XMLHttpRequest();
 		xhr.open("POST","Logout.do", true);
 		console.log(xhr.readyState);
@@ -77,9 +74,9 @@ $(function () {
 		}
 	}
 	
-	function viewInitEmpReimb(){
+	function getAllEmpReimbPage(){
 		var xhr = new XMLHttpRequest();
-		xhr.open("POST","viewAllReimbController.do", true);
+		xhr.open("POST","GetAllReimbPageController.do", true);
 		console.log(xhr.readyState);
 		xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 		console.log("AFTER HEADER " + xhr.readyState);
@@ -90,15 +87,15 @@ $(function () {
 			if(xhr.readyState == 4 && xhr.status==200){
 				console.log("in xhr callback" + xhr.responseText);
 				document.getElementById('view').innerHTML = xhr.responseText;
-				getInitEmpReimb();
+				getAllEmpReimb();
 				
 			}
 		}
 	}
 	
-	function getInitEmpReimb(){
+	function getAllEmpReimb(){
 		var xhr = new XMLHttpRequest();
-		xhr.open("POST","ViewEmployeeReimbController.do", true);
+		xhr.open("POST","GetAllEmpReimbController.do", true);
 		console.log(xhr.readyState);
 		xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 		console.log("AFTER HEADER " + xhr.readyState);
@@ -109,13 +106,13 @@ $(function () {
 			if(xhr.readyState == 4 && xhr.status==200){
 				console.log("in xhr callback" + xhr.responseText);
 				var data = JSON.parse(xhr.responseText);
-				man_viewReimbDataTable(data);
+				viewAllEmpReimbDataTable(data);
 				
 			}
 		}
 	}
 	
-	function man_viewReimbDataTable(getData){
+	function viewAllEmpReimbDataTable(getData){
 		for(var i = 0;i < getData.length;i++){
 			a = new Date(getData[i].submitted);
 			b = new Date(getData[i].resolved);
@@ -148,12 +145,12 @@ $(function () {
 			$('#bustamoveView tbody').on('click', '.approveButton',function(){
 				var data = table.row($(this).parents('tr')).data();
 				var index = table.row($(this).parents('tr')).index();
-				approve(data,index);
+				approveReimb(data,index);
 			});
 			$('#bustamoveView tbody').on('click', '.denyButton',function(){
 				var data = table.row($(this).parents('tr')).data();
 				var index = table.row($(this).parents('tr')).index();
-				deny(data,index);
+				denyReimb(data,index);
 			});
 			
 		});
@@ -163,14 +160,16 @@ $(function () {
 		});
 	}
 	
-	function approve(data,index){
+	//ApproveReimb is when a manager approves a reimbursement for an employee. Data provides the 
+	//user information. ******took out index -useless
+	function approveReimb(data){
 		
-		var accept = {reimbid:data.reimbId};
-		var json = JSON.stringify(accept);
+		var aprove = {reimbid:data.reimbId};
+		var json = JSON.stringify(aprove);
 		var xhr = new XMLHttpRequest();
 		
 		var xhr = new XMLHttpRequest();
-		xhr.open("POST","accept.do", true);
+		xhr.open("POST","AproveReimb.do", true);
 		console.log(xhr.readyState);
 		xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 		console.log("AFTER HEADER " + xhr.readyState);
@@ -185,14 +184,17 @@ $(function () {
 			}
 		};
 	}
-	function deny(data,index){
+	
+	//denyReimb is when a manager approves a reimbursement for an employee. Data provides the 
+	//user information. ******took out index -useless
+	function denyReimb(data){
 
 		var deny = {reimbid:data.reimbId};
 		var json = JSON.stringify(deny);
 		var xhr = new XMLHttpRequest();
 		
 		var xhr = new XMLHttpRequest();
-		xhr.open("POST","Deny.do", true);
+		xhr.open("POST","DenyReimb.do", true);
 		console.log(xhr.readyState);
 		xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 		console.log("AFTER HEADER " + xhr.readyState);
@@ -225,7 +227,7 @@ $(function () {
 		});
 	}
 
-	function gettoAddReimb(){
+	function getAddReimbPage(){
 		var xhr = new XMLHttpRequest();
 		xhr.open("GET","employeePartialHTML/addReimbursement.html", true);
 		console.log(xhr.readyState);
@@ -244,7 +246,7 @@ $(function () {
 					addReimb();
 				});
 				$('#goView').on('click', function(){
-					viewReimb();
+					viewReimbPage();
 				});
 				$('#logout').on('click', function(){
 					logout();
@@ -275,10 +277,10 @@ $(function () {
 		}
 		console.log("in addReimb and description is " + description);
 		
-		addReimbGoToSuccess(typeresult,amount,description);
+		addReimbData(typeresult,amount,description);
 	}
 
-	function addReimbGoToSuccess(typeresult,amountresult,description){
+	function addReimbData(typeresult,amountresult,description){
 		if(typeresult != false && amountresult != false){
 			var reimb_amount = amountresult;
 			var reimb_type = typeresult;
@@ -305,7 +307,7 @@ $(function () {
 		}
 	}
 
-	function viewReimb(){
+	function viewReimbPage(){
 		var xhr = new XMLHttpRequest();
 		xhr.open("GET","employeePartialHTML/viewReimbHtml.html", true);
 		console.log(xhr.readyState);
@@ -327,7 +329,7 @@ $(function () {
 //Friday May 25th
 	function getViewData(){
 		var xhr = new XMLHttpRequest();
-		xhr.open("POST","WriterEmpView.do", true);
+		xhr.open("POST","writerEmpView.do", true);
 		console.log(xhr.readyState);
 		xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 		xhr.send();
