@@ -28,12 +28,12 @@ public class Reimbursement {
 		this.description = description;
 	}
 	
-	public Reimbursement (int amount, Date submitted, Date resolved, String description, String statusId) {
+	public Reimbursement (int amount, Date submitted, Date resolved, String description, String status) {
 		this.amount = amount;
 		this.submitted = submitted;
 		this.resolved = resolved;
 		this.description = description;
-		this.statusId = statusId;
+		this.status = status;
 	}
 	
 	public int getReimbId() {
@@ -105,5 +105,8 @@ public class Reimbursement {
 		this.resolverId = resolverId;
 	}
 	
-	
+	public String toString() {
+		return reimbId + " " + amount + " " + type + " " + description + " " +
+	author + " " + statusId + " " + resolved + " " + submitted + " " + status + " " + resolverId;
+	}
 }

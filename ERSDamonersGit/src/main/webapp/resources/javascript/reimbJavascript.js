@@ -31,7 +31,7 @@ $(function () {
 		var json = JSON.stringify(toSend);
 
 		var xhr = new XMLHttpRequest();
-		console.log(xhr.readyState);
+//		console.log(xhr.readyState);
 		xhr.onreadystatechange = function(){
 			if(xhr.readyState == 4 && xhr.status==200){
 				console.log("in xhr callback" + xhr.responseText);
@@ -98,7 +98,7 @@ $(function () {
 	
 	function getInitEmpReimb(){
 		var xhr = new XMLHttpRequest();
-		xhr.open("POST","GetDetailViewController.do", true);
+		xhr.open("POST","ViewEmployeeReimbController.do", true);
 		console.log(xhr.readyState);
 		xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 		console.log("AFTER HEADER " + xhr.readyState);
@@ -324,20 +324,19 @@ $(function () {
 			}
 		};
 	}
-
+//Friday May 25th
 	function getViewData(){
 		var xhr = new XMLHttpRequest();
 		xhr.open("POST","WriterEmpView.do", true);
 		console.log(xhr.readyState);
 		xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-		console.log("AFTER HEADER " + xhr.readyState);
 		xhr.send();
 
 		console.log(xhr.readyState);
 		xhr.onreadystatechange = function(){
 			if(xhr.readyState == 4 && xhr.status==200){
 				console.log("after ready state");
-				var getData = JSON.parse(xhr.responseText);//getting data for viewReimb html
+				var getData = JSON.parse(xhr.responseText);
 				populateEmpView(getData);
 				$('#goAdd').on('click', function(){
 					gettoAddReimb();
@@ -350,14 +349,15 @@ $(function () {
 	}
 
 	function populateEmpView(getData){
+		
 		for(var i = 0;i < getData.length;i++){
-			if(getData[i].subDate != null){
-			a = new Date(getData[i].subDate);
-			getData[i].subDate = a;
+			if(getData[i].submitted != null){
+			a = new Date(getData[i].submitted);
+			getData[i].submitted = a;
 			}
-			else if(getData[i].resDate != null){
-			b = new Date(getData[i].resDate);
-			getData[i].resDate = b;
+			else if(getData[i].resolved != null){
+			b = new Date(getData[i].resolved);
+			getData[i].resolved = b;
 			}
 			
 			
@@ -366,11 +366,11 @@ $(function () {
 			$('#bustamoveView').DataTable({
 				data: getData,
 				columns: [
-					{ data: "reimb_amount" },	            
-					{ data: "subDate" },
-					{ data: "resDate" },
+					{ data: "amount" },	            
+					{ data: "submitted" },
+					{ data: "resolved" },
 					{ data: "description" },
-					{ data: "riembStatus"},
+					{ data: "status"},
 					],
 					"columnDefs": [ {
 						"targets": -1,

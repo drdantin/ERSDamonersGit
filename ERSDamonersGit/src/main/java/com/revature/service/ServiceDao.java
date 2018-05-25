@@ -47,7 +47,7 @@ public class ServiceDao implements Service {
 	
 	@Override
 	public List<Reimbursement> getView(int user_id) {
-		
+		List<Reimbursement> list;
 		list = Dao.getView(user_id);
 		return list;
 	}

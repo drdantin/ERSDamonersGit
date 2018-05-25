@@ -30,7 +30,7 @@ public class TheRequestHelperForMaster {
 			return Logout.getOut(request, response);
 		case "/ERS_Damoners/viewAllReimbController.do":
 			return ViewAllReimbController.viewAllReimb(request, response);
-		case	"/ERS_Damoners/GetDetailViewController.do":
+		case	"/ERS_Damoners/ViewEmployeeReimbController.do":
 			return ViewEmployeeReimbController.getViewEmployeeReimb(request,response);
 		case	"/ERS_Damoners/Deny.do":
 			return DenyController.deny(request,response);

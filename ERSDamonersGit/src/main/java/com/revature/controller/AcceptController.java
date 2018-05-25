@@ -28,7 +28,6 @@ public class AcceptController {
 			String thejson = "";
 			if(br != null){
 				thejson = br.readLine();
-				System.out.println("the thejson is " + thejson);
 				
 				reimbObj = mapper.readValue(thejson, Reimbursement.class);
 				
