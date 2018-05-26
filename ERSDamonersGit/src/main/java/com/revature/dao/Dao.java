@@ -72,7 +72,20 @@ public class Dao {
 		}
 		return isAuthenticated;
 	}
-	
+//For Reference- this is the stored procedure in Sql Developer
+//CREATE OR REPLACE PROCEDURE ADDREIMB
+//	(I_REIMBAMOUNT IN ERS_REIMBURSEMENT.REIMB_AMOUNT%TYPE,
+//			I_REIMBTYPE IN ERS_REIMBURSEMENT.REIMB_TYPE_ID%TYPE,
+//			I_REIMBDESCRIPTION IN ERS_REIMBURSEMENT.REIMB_DESCRIPTION%TYPE,
+//			I_REIMBAUTHOR IN ERS_REIMBURSEMENT.REIMB_AUTHOR%TYPE) 
+//			IS
+//			BEGIN
+//			INSERT INTO ERS_REIMBURSEMENT VALUES( NULL, I_REIMBAMOUNT, SYSDATE,
+//			NULL,I_REIMBDESCRIPTION,NULL,I_REIMBAUTHOR,NULL,400,500);--ALERT ******500TYPEID
+//			COMMIT;
+//			END ADDREIMB;
+//			/
+//			COMMIT;
 	public static boolean addReimbursement(int user_id, int reimb_amount, int reimb_type,String description) {
 		try(Connection conn = DriverManager.getConnection(url, username, password);){
 			String sql ="{call ADDREIMB(?,?,?,?)}";
@@ -90,6 +103,18 @@ public class Dao {
 		return true;
 	}
 	
+//	CREATE OR REPLACE PROCEDURE ACCEPT
+//	(I_REIMBID IN ERS_REIMBURSEMENT.REIMB_ID%TYPE,
+//	I_REIMBRESOLVER IN ERS_REIMBURSEMENT.REIMB_RESOLVER%TYPE,
+//	I_REIMBSTATUSID IN ERS_REIMBURSEMENT.REIMB_STATUS_ID%TYPE) 
+//	IS
+//	BEGIN
+//	UPDATE ERS_REIMBURSEMENT SET REIMB_RESOLVER = I_REIMBRESOLVER, REIMB_STATUS_ID =I_REIMBSTATUSID,
+//	REIMB_RESOLVED = SYSDATE WHERE REIMB_ID = I_REIMBID;
+//	COMMIT;
+//	END ACCEPT;
+//	/
+//	commit;
 	public static boolean accept(int reimbid, int resolverid, int statusid) {
 		System.out.println(reimbid + " " + resolverid + " " + statusid);
 		try(Connection conn = DriverManager.getConnection(url, username, password);){
@@ -188,7 +213,7 @@ public static List<Reimbursement> getView(int user_id){
 	return list;
 }
 
-public static List<ReimbAndEmployee> getEmployeeDescription_View(){
+public static List<ReimbAndEmployee> getReimbAndView(){
 List<ReimbAndEmployee> list = new ArrayList<ReimbAndEmployee>();
 try(Connection conn = DriverManager.getConnection(url, username, password);){
 	String sql= "select user_first_name, user_last_name, user_email, reimb_resolver,reimb_submitted, reimb_resolved, "
@@ -282,4 +307,22 @@ public static int getStatusId(String status) {
 	}
 	return reimb_status_id;
 	}
+
+
+//CREATE SEQUENCE makeReimbId
+//START with 2
+//INCREMENT BY 1;
+//
+//
+//CREATE OR REPLACE TRIGGER insertTrigger
+//  BEFORE
+//    INSERT
+//  ON ERS_REIMBURSEMENT
+//  FOR EACH ROW
+//BEGIN
+//  IF : NEW.REIMB_ID IS NULL THEN
+//  SELECT MAKEREIMBID.NEXTVAL INTO :NEW.REIMB_ID
+//  FROM DUAL;
+//END IF;
+//END INSERTTRIGGER;
 }

@@ -6,7 +6,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.service.ServiceDao;
-
+//LoginController does the businness logic oriented around the login action. Within its static login 
+//method it uses BufferedReader to get the input stream asynchronously coming from reimbJavascript Ajax
+//call. Within javascript side it sends login username and password data. It is checked and what is 
+//returned from the Controllers business logic is information which routes to a new page and that uses
+//ObjectMapper to send the database info to the reciever end of the reimbJavascipt login call. 
 public class LoginController {
 
 	public static String login(HttpServletRequest request,HttpServletResponse response) {

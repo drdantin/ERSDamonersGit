@@ -19,7 +19,8 @@ public class TheMasterServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getRequestDispatcher(TheRequestHelperForMaster.process(request,response)).forward(request, response);
 	}
-
+//RequestDispatcher-Defines an object that receives requests from the client and sends them to any resource (such as a servlet, HTML file, 
+//or JSP file) on the server.
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String check = "yes";

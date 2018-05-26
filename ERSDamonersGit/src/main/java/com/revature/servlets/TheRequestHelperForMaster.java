@@ -11,7 +11,7 @@ import com.revature.controller.GetAllReimbPageController;
 import com.revature.controller.LoginController;
 import com.revature.controller.LogoutController;
 
-import com.revature.controller.WriterEmpView;
+import com.revature.controller.GetEmpReimb;
 
 
 public class TheRequestHelperForMaster {
@@ -25,8 +25,8 @@ public class TheRequestHelperForMaster {
 			return AproveReimbController.aproveReimb(request,response);
 		case "/ERS_Damoners/addReimbursement.do":
 			return AddReimbursementController.addReimb(request,response);
-		case "/ERS_Damoners/WriterEmpView.do":
-			return WriterEmpView.writeView(request, response);
+		case "/ERS_Damoners/GetEmpReimb.do":
+			return GetEmpReimb.getEmpReimb(request, response);
 		case "/ERS_Damoners/Logout.do":
 			return LogoutController.logOut(request, response);
 		case "/ERS_Damoners/GetAllReimbPageController.do":

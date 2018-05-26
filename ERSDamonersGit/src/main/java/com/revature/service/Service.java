@@ -16,7 +16,7 @@ public interface Service {
 	
 	public List<Reimbursement> getView(int user_id);
 	
-	public List<ReimbAndEmployee> getEmployeeDescription_View();
+	public List<ReimbAndEmployee> getReimbAndEmp();
 	
 	public String getResolver(int user_id);
 	

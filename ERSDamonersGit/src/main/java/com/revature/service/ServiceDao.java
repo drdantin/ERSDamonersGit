@@ -53,9 +53,9 @@ public class ServiceDao implements Service {
 	}
 	
 	@Override
-	public List<ReimbAndEmployee> getEmployeeDescription_View(){
+	public List<ReimbAndEmployee> getReimbAndEmp(){
 		List<ReimbAndEmployee> list;
-		list = Dao.getEmployeeDescription_View();			
+		list = Dao.getReimbAndView();			
 		return list;
 	}
 	

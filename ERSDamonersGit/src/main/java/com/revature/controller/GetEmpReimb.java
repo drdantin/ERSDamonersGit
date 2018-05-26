@@ -8,10 +8,13 @@ import javax.servlet.http.HttpServletResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.model.Reimbursement;
 import com.revature.service.ServiceDao;
-
-public class WriterEmpView {
+//GetEmp Reimb gets employee reimbursement information through the use of request.getSession.
+//getAttribute. Once the username is attained than use the username as a parameter for a service
+//method to call the Dao for the user id. Than this id can be used to get Reimbursements. ObjectMapper
+// is used to writeValue to an OutputStream.
+public class GetEmpReimb {
 	
-	public static String writeView(HttpServletRequest request,HttpServletResponse response) {
+	public static String getEmpReimb(HttpServletRequest request,HttpServletResponse response) {
 		String isWritten = "yes";
 		List<Reimbursement> list;
 		ServiceDao serveDao = new ServiceDao();
