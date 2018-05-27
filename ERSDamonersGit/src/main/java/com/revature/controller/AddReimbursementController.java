@@ -33,12 +33,13 @@ public class AddReimbursementController{
 				thejson = br.readLine();
 				
 				Reimbursement ajax = mapper.readValue(thejson, Reimbursement.class);
+				ajax.setAmountInt(Integer.parseInt(ajax.getAmount()));
 				response.setContentType("application/json");   
 				String username = (String)request.getSession().getAttribute("loggedusername");
 				int user_id = serveDao.getUserId(username);
 				int getType = serveDao.getType(ajax.getType());
 				
-				isSuccess = serveDao.addReimbursement(user_id,ajax.getAmount(),getType,ajax.getDescription());
+				isSuccess = serveDao.addReimbursement(user_id,ajax.getAmountInt(),getType,ajax.getDescription());
 				
 			}
 		}catch(Exception e) {

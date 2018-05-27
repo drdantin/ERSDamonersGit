@@ -196,7 +196,7 @@ public static List<Reimbursement> getView(int user_id){
 		int i = 0;
 		while(rset.next()) {
 			list.add(new Reimbursement());
-			list.get(i).setAmount(rset.getInt(1));
+			list.get(i).setAmountInt(rset.getInt(1));
 			list.get(i).setSubmitted(rset.getDate(2));
 			list.get(i).setResolved(rset.getDate(3));
 			list.get(i).setDescription(rset.getString(4));

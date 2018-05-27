@@ -5,7 +5,8 @@ import java.sql.Date;
 public class Reimbursement {
 	
 	private int reimbId;
-	private int amount;
+	private int amountInt;
+	private String amount;
 	private String type;
 	private String description;
 	private String author;
@@ -22,14 +23,21 @@ public class Reimbursement {
 		this.reimbId = reimbId;
 	}
 	
-	public Reimbursement( int amount, String type, String description) {
+	public Reimbursement( String amount, String type, String description) {
 		this.amount = amount;
 		this.type = type;
 		this.description = description;
 	}
 	
-	public Reimbursement (int amount, Date submitted, Date resolved, String description, String status) {
-		this.amount = amount;
+	public Reimbursement( int amountInt, String type, String description) {
+		this.amountInt = amountInt;
+		this.type = type;
+		this.description = description;
+	}
+	
+	
+	public Reimbursement (int amountInt, Date submitted, Date resolved, String description, String status) {
+		this.amountInt = amountInt;
 		this.submitted = submitted;
 		this.resolved = resolved;
 		this.description = description;
@@ -42,12 +50,19 @@ public class Reimbursement {
 	public void setReimbId(int reimbId) {
 		this.reimbId = reimbId;
 	}
-	public int getAmount() {
+	public int getAmountInt() {
+		return amountInt;
+	}
+	public void setAmountInt(int amount) {
+		this.amountInt = amount;
+	}
+	public String getAmount() {
 		return amount;
 	}
-	public void setAmount(int amount) {
+	public void setAmount(String amount) {
 		this.amount = amount;
 	}
+
 	public String getType() {
 		return type;
 	}
@@ -106,7 +121,7 @@ public class Reimbursement {
 	}
 	
 	public String toString() {
-		return reimbId + " " + amount + " " + type + " " + description + " " +
+		return reimbId + " " + amountInt + " " + type + " " + description + " " +
 	author + " " + statusId + " " + resolved + " " + submitted + " " + status + " " + resolverId;
 	}
 }
